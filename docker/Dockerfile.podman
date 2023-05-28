@@ -175,7 +175,7 @@ RUN python3 -m pip install --no-cache-dir \
 # COPY --chown=${UNAME}:${UNAME} --from=pyproject-builder ${APPDIR}/${APPNAME} ${APPNAME}
 # ENV INVOKEAI_ROOT ${VOLUME_DIR}
 # ENV TRANSFORMERS_CACHE ${VOLUME_DIR}/.cache
-# ENV INVOKE_MODEL_RECONFIGURE "--yes --default_only"
+ENV INVOKE_MODEL_RECONFIGURE "--yes --default_only"
 EXPOSE 9090
 ENTRYPOINT [ "invokeai" ]
 CMD [ "--web", "--host", "0.0.0.0", "--port", "9090" ]
