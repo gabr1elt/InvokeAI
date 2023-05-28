@@ -115,47 +115,47 @@ RUN apt-get update && \
 
 # install InvokeAI
 
-# RUN python3 -m pip install --no-cache-dir \
-#         "InvokeAI[xformers]" \
-#         --use-pep517 \
-#         --extra-index-url https://download.pytorch.org/whl/cu117
+RUN python3 -m pip install --no-cache-dir \
+        "InvokeAI[xformers]" \
+        --use-pep517 \
+        --extra-index-url https://download.pytorch.org/whl/cu117
 
 # or
 
-# Set working directory and env
-ARG APPNAME=InvokeAI
-ARG APPDIR=/usr/src/${APPNAME}
-WORKDIR ${APPDIR}
-# ENV PATH ${APPDIR}/bin:$PATH
+# # Set working directory and env
+# ARG APPNAME=InvokeAI
+# ARG APPDIR=/usr/src/${APPNAME}
+# WORKDIR ${APPDIR}
+# # ENV PATH ${APPDIR}/bin:$PATH
 
-# # Create virtual environment
-# RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-#   python3 -m venv "${APPNAME}" \
-#   --upgrade-deps
-
-# # Install requirements
-# COPY --link pyproject.toml .
-# COPY --link invokeai/version/invokeai_version.py invokeai/version/__init__.py invokeai/version/
-# ARG PIP_EXTRA_INDEX_URL
-# ENV PIP_EXTRA_INDEX_URL ${PIP_EXTRA_INDEX_URL}
+# # # Create virtual environment
 # # RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-# #   "${APPNAME}"/bin/pip install .
+# #   python3 -m venv "${APPNAME}" \
+# #   --upgrade-deps
+
+# # # Install requirements
+# # COPY --link pyproject.toml .
+# # COPY --link invokeai/version/invokeai_version.py invokeai/version/__init__.py invokeai/version/
+# # ARG PIP_EXTRA_INDEX_URL
+# # ENV PIP_EXTRA_INDEX_URL ${PIP_EXTRA_INDEX_URL}
+# # # RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
+# # #   "${APPNAME}"/bin/pip install .
+# # RUN python3 -m pip install --no-cache-dir \
+# #   .[xformers]
+
+# # Install pyproject.toml
+# # COPY --link . .
+# # RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
+# #   "${APPNAME}/bin/pip" install .
+# COPY . .
+# # CUDA
+# ARG PIP_EXTRA_INDEX_URL="https://download.pytorch.org/whl/cu117" 
+# ENV PIP_EXTRA_INDEX_URL ${PIP_EXTRA_INDEX_URL}
 # RUN python3 -m pip install --no-cache-dir \
 #   .[xformers]
 
-# Install pyproject.toml
-# COPY --link . .
-# RUN --mount=type=cache,target=${PIP_CACHE_DIR} \
-#   "${APPNAME}/bin/pip" install .
-COPY . .
-# CUDA
-ARG PIP_EXTRA_INDEX_URL="https://download.pytorch.org/whl/cu117" 
-ENV PIP_EXTRA_INDEX_URL ${PIP_EXTRA_INDEX_URL}
-RUN python3 -m pip install --no-cache-dir \
-  .[xformers]
-
-# # Build patchmatch
-# RUN python3 -c "from patchmatch import patch_match"
+# # # Build patchmatch
+# # RUN python3 -c "from patchmatch import patch_match"
 
 # # Create a new user
 # ARG UNAME=appuser
