@@ -154,8 +154,8 @@ ENV PIP_EXTRA_INDEX_URL ${PIP_EXTRA_INDEX_URL}
 RUN python3 -m pip install --no-cache-dir \
   .[xformers]
 
-# Build patchmatch
-RUN python3 -c "from patchmatch import patch_match"
+# # Build patchmatch
+# RUN python3 -c "from patchmatch import patch_match"
 
 # # Create a new user
 # ARG UNAME=appuser
