@@ -103,6 +103,9 @@ RUN python3 -m pip install --no-cache-dir \
         ipykernel \
         safetensors \
         torch-tb-profiler \
+        xformers \
+        triton \
+        pypatchmatch \
         compel
 
 RUN apt-get update && \
@@ -177,6 +180,7 @@ RUN python3 -c "from patchmatch import patch_match"
 # USER ${UNAME}:${UNAME}
 # COPY --chown=${UNAME}:${UNAME} --from=pyproject-builder ${APPDIR}/${APPNAME} ${APPNAME}
 # ENV INVOKEAI_ROOT ${VOLUME_DIR}
+ENV INVOKEAI_ROOT ${HOME}"/storage"
 # ENV TRANSFORMERS_CACHE ${VOLUME_DIR}/.cache
 ENV INVOKE_MODEL_RECONFIGURE "--yes --default_only"
 EXPOSE 9090

@@ -19,7 +19,7 @@ podman run \
     # use gpu (CDI)
     --device nvidia.com/gpu=all \
     -p 127.0.0.1:9090:9090 \
-    # -v "${HOME}/Development/diffusers:/root/Development:cached" \
+    -v "${HOME}/Development/InvokeAI/storage:/root/storage" \
     -h "invoke-ai" \
     gabr1elt/invoke-ai
     # gabr1elt/invoke-ai /bin/bash
@@ -29,6 +29,7 @@ podman run \
     -it \
     --device nvidia.com/gpu=all \
     -p 127.0.0.1:9090:9090 \
+    -v "${HOME}/Development/InvokeAI/storage:/root/storage" \
     -h "invoke-ai" \
     gabr1elt/invoke-ai
 
