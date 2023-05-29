@@ -21,8 +21,8 @@ podman run \
     -p 127.0.0.1:9090:9090 \
     -v "${HOME}/Development/InvokeAI/storage:/root/storage" \
     -h "invoke-ai" \
+    # --entrypoint="/bin/bash" \
     gabr1elt/invoke-ai
-    # gabr1elt/invoke-ai /bin/bash
 
 podman run \
     --rm \

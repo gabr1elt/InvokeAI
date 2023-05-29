@@ -181,7 +181,7 @@ RUN python3 -c "from patchmatch import patch_match"
 # COPY --chown=${UNAME}:${UNAME} --from=pyproject-builder ${APPDIR}/${APPNAME} ${APPNAME}
 # ENV INVOKEAI_ROOT ${VOLUME_DIR}
 ENV INVOKEAI_ROOT ${HOME}"/storage"
-# RUN mkdir -p ${INVOKEAI_ROOT}
+RUN mkdir -p ${INVOKEAI_ROOT}
 # ENV TRANSFORMERS_CACHE ${VOLUME_DIR}/.cache
 ENV INVOKE_MODEL_RECONFIGURE "--yes --default_only"
 EXPOSE 9090
